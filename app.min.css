@@ -1,0 +1,100 @@
+/* Code tidied up by ScrapBook */
+@import url("css.css");
+.booster-app { display: none; }
+.booster-app * { box-sizing: border-box; }
+.booster-app__wrapper { position: fixed; z-index: 2100000000; bottom: 20px; font-family: "Archivo Narrow",sans-serif; font-weight: 700; letter-spacing: 0.5px; opacity: 0; visibility: hidden; transition: all 0.5s linear 0s; }
+.booster-app__wrapper::before { width: 0px; height: 0px; border-style: solid; border-width: 0px 10px 20px; border-color: transparent transparent rgb(255, 255, 255); display: block; position: absolute; content: ""; bottom: -5px; left: -5px; z-index: 1; transform: rotate(-135deg); opacity: 0; }
+.booster-app__wrapper--disable-animation { transition: opacity 0.5s linear 0s; }
+.booster-app__wrapper--disable-animation .booster-app__avatar, .booster-app__wrapper--disable-animation .booster-app__icon-wrapper, .booster-app__wrapper--disable-animation .booster-app__counter { transition: all 0s linear 0s; }
+.booster-app__wrapper--right { right: 20px; }
+.booster-app__wrapper--right .booster-app__box { right: 390px; }
+.booster-app__wrapper--right .booster-app__close { left: 0px; }
+.booster-app__wrapper--right .booster-app__wrapper--minimized { right: 10px; }
+.booster-app__wrapper--left { left: 20px; }
+.booster-app__wrapper--left .booster-app__box { left: 90px; }
+.booster-app__wrapper--left .booster-app__close { right: 0px; }
+.booster-app__wrapper--left .booster-app__wrapper--minimized { left: 10px; }
+.booster-app__wrapper--fade-in { opacity: 1; visibility: visible; }
+.booster-app__counter { position: absolute; top: 10px; right: 10px; width: 22px; height: 22px; text-align: center; border-radius: 50%; line-height: 22px; font-weight: 300; color: rgb(255, 255, 255); background-color: rgb(230, 63, 54); opacity: 1; transition: all 0.5s linear 0s; z-index: 3; }
+.booster-app__counter::before { content: attr(data-amount); }
+.booster-app__wrapper--minimized { bottom: 10px; }
+.booster-app__wrapper--minimized::before { opacity: 1; transition: all 0.5s ease-in-out 0.5s; }
+.booster-app__wrapper--minimized .booster-app__avatar, .booster-app__wrapper--minimized .booster-app__icon-wrapper { width: 60px; height: 60px; }
+.booster-app__wrapper--minimized .booster-app__icon-wrapper { background-color: rgb(255, 255, 255); }
+.booster-app__wrapper--minimized .booster-app__counter { top: 0px; right: 0px; }
+.booster-app.booster-icon-alert .booster-app__wrapper--minimized::before, .booster-app.booster-icon-custom .booster-app__wrapper--minimized::before { content: none; }
+.booster-app.mobile-mode .booster-app__box { width: 90%; left: 5%; position: fixed; bottom: 180px; }
+.booster-app.mobile-mode .booster-app__messages-item { width: 100%; }
+.booster-app.mobile-mode .booster-app__messages-item--new { transform: translate(0px, 150%); }
+.booster-app.mobile-mode .booster-app__messages-item--slide-up { transform: translate(0px, 0px); }
+.booster-app.mobile-mode:not(.wa-mode) .booster-app__wrapper { bottom: 70px; }
+.booster-app.mobile-mode.wa-mode .booster-app__box { bottom: 130px; }
+.booster-app.is-wrapped .booster-app__wrapper { position: absolute; }
+.booster-app__inner { position: relative; }
+.booster-app__avatar { position: relative; width: 80px; height: 80px; transition: all 0.5s ease-in-out 0s; }
+.booster-app__avatar--alert .booster-app__icon-inner { border: 0px none; }
+.booster-app__avatar--alert .booster-app__icon { background-image: url("info.svg"); margin: 20% auto 0px; width: 60%; height: 60%; }
+.booster-app__avatar--alert .booster-app__icon-wrapper { background-color: rgb(255, 255, 255); }
+.booster-app__avatar--custom .booster-app__icon-inner { border-color: rgb(27, 149, 227); }
+.booster-app__avatar--custom .booster-app__icon { background-image: url("custom.svg"); margin: 15% auto 0px; }
+.booster-app__avatar--custom .booster-app__icon-wrapper { background-color: rgb(255, 255, 255); }
+.booster-app__avatar--custom .booster-app__counter { display: none; }
+.booster-app__icon-wrapper { background-color: rgba(255, 255, 255, 0.7); border-radius: 50%; padding: 4px; width: 80px; height: 80px; cursor: pointer; transition: all 0.5s ease-in-out 0s; box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5); position: relative; z-index: 1; }
+.booster-app__icon-inner { border: 2px solid rgb(52, 127, 252); width: 100%; height: 100%; border-radius: 50%; background-color: rgb(255, 255, 255); position: relative; z-index: 2; overflow: hidden; }
+.booster-app__icon { background: rgb(255, 255, 255) url("avatar.svg") no-repeat scroll center center / contain ; width: 70%; height: 70%; margin: 30% auto 0px; }
+.booster-app__close { background-color: rgb(255, 255, 255); padding: 5px; position: absolute; top: -15px; border-radius: 50%; cursor: pointer; transition: visibility 0.5s linear 0s, opacity 0.5s linear 0s; opacity: 1; visibility: visible; }
+.booster-app__close-icon { background: rgb(255, 255, 255) url("close.svg") no-repeat scroll center center / contain ; width: 10px; height: 10px; display: block; opacity: 0.6; }
+.booster-app__box { position: absolute; bottom: 40px; }
+.booster-app__messages { margin: 0px; padding: 0px; list-style-type: none; }
+.booster-app__messages-item { width: 300px; position: absolute; background-color: rgb(52, 127, 252); padding: 16px; border-radius: 8px; vertical-align: middle; transition: all 500ms ease-in-out 0s; bottom: 0px; left: 0px; font-size: 16px; color: rgb(255, 255, 255); }
+.booster-app__messages-item::before { width: 0px; height: 0px; border-style: solid; border-width: 0px 5px 10px; border-color: transparent transparent rgb(52, 127, 252); display: block; position: absolute; content: ""; bottom: 6px; left: -4px; }
+.booster-app__messages-item p { margin: 4px 0px; padding: 0px; }
+.booster-app__messages-item hr { border-top: 0px none; opacity: 0.6; }
+.booster-app__messages-item .messages-item-image { position: relative; }
+.booster-app__messages-item .messages-item-image img { max-width: 60%; }
+.booster-app__messages-item .messages-item-image + .messages-item-title { margin-top: 12px; }
+.booster-app__messages-item .messages-item-small-text { vertical-align: middle; font-weight: 300; opacity: 0.8; }
+.booster-app__messages-item .messages-item-title { font-size: 18px; font-weight: 600; font-stretch: normal; font-style: normal; line-height: 24px; text-align: left; display: inline-block; }
+.booster-app__messages-item .messages-item-content { display: flex; align-items: center; }
+.booster-app__messages-item .messages-item-content__paragraph { font-weight: 300; opacity: 0.8; margin: 5px 0px; }
+.booster-app__messages-item .messages-item-icon { display: block; padding-left: 10px; text-align: center; opacity: 0.7; height: 19px; }
+.booster-app__messages-item .messages-item-icon .messages-item-icon--money, .booster-app__messages-item .messages-item-icon .messages-item-icon--eye, .booster-app__messages-item .messages-item-icon .messages-item-icon--envelope { width: 19px; height: 19px; display: inline-block; background-repeat: no-repeat; background-position: center center; background-size: contain; }
+.booster-app__messages-item .messages-item-icon .messages-item-icon--money { background-image: url("money.svg"); }
+.booster-app__messages-item .messages-item-icon .messages-item-icon--eye { background-image: url("eye.svg"); }
+.booster-app__messages-item .messages-item-icon .messages-item-icon--envelope { background-image: url("envelope.svg"); }
+.booster-app__messages-item .messages-item-button { padding: 10px 20px; margin-top: 10px; text-align: center; color: rgb(0, 0, 0); background: rgb(255, 255, 255) none repeat scroll 0% 0%; border-radius: 4px; text-decoration: none; display: block; cursor: pointer; font-weight: 400; box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.6); }
+.booster-app__messages-item .messages-item-button--flat { padding: 0px; border-radius: 0px; text-align: left; box-shadow: none; }
+.booster-app__text-icon { width: 20px; height: 20px; margin-right: 10px; display: inline-block; vertical-align: middle; background-repeat: no-repeat; background-position: center center; opacity: 0.8; }
+.booster-app__text-icon--calendar { background-image: url("calendar.svg"); }
+.booster-app__text-icon--people { background-image: url("shape.svg"); }
+.booster-app__messages-item--new { transform: translate(0px, 130%); opacity: 0; }
+.booster-app__messages-item--alert, .booster-app__messages-item--custom, .booster-app__messages-item--be-voucher, .booster-app__messages-item--voucher { background-color: rgb(255, 255, 255); color: rgb(33, 33, 33); border-top: 6px solid transparent; box-shadow: 0px 3px 12px rgba(0, 0, 0, 0.5); }
+.booster-app__messages-item--alert::before, .booster-app__messages-item--custom::before, .booster-app__messages-item--be-voucher::before, .booster-app__messages-item--voucher::before { content: none; }
+.booster-app__messages-item--alert p, .booster-app__messages-item--custom p, .booster-app__messages-item--be-voucher p, .booster-app__messages-item--voucher p { margin: 12px 0px; }
+.booster-app__messages-item--alert .messages-item-small-text, .booster-app__messages-item--custom .messages-item-small-text, .booster-app__messages-item--be-voucher .messages-item-small-text, .booster-app__messages-item--voucher .messages-item-small-text { opacity: 1; }
+.booster-app__messages-item--alert .messages-item-button, .booster-app__messages-item--custom .messages-item-button, .booster-app__messages-item--be-voucher .messages-item-button, .booster-app__messages-item--voucher .messages-item-button { color: rgb(0, 0, 0); font-size: 18px; }
+.booster-app__messages-item--alert .messages-item-button:hover, .booster-app__messages-item--custom .messages-item-button:hover, .booster-app__messages-item--be-voucher .messages-item-button:hover, .booster-app__messages-item--voucher .messages-item-button:hover { color: rgb(0, 0, 0); }
+.booster-app__messages-item--alert { border-top-color: rgb(0, 168, 120); }
+.booster-app__messages-item--alert .messages-item-button { color: rgb(0, 168, 120); }
+.booster-app__messages-item--alert .messages-item-button:hover { color: rgb(0, 117, 84); }
+.booster-app__messages-item--custom { border-top-color: rgb(27, 149, 227); }
+.booster-app__messages-item--custom .messages-item-button { color: rgb(27, 149, 227); }
+.booster-app__messages-item--custom .messages-item-button:hover { color: rgb(22, 119, 181); }
+.booster-app__messages-item--be-voucher { border-top-color: rgb(180, 47, 40); }
+.booster-app__messages-item--be-voucher .messages-item-button { color: rgb(180, 47, 40); }
+.booster-app__messages-item--be-voucher .messages-item-button:hover { color: rgb(138, 36, 31); }
+.booster-app__messages-item--be-voucher .messages-item-title { max-width: 77%; }
+.booster-app__messages-item--be-voucher .ribbon { position: absolute; width: 80px; top: -6px; right: 10px; bottom: -1px; background-position-x: right; background-repeat: no-repeat; background-image: url("ribbon.svg"); }
+.booster-app__messages-item--voucher { border-top-color: rgb(74, 164, 196); }
+.booster-app__messages-item--voucher .messages-item-button { color: rgb(74, 164, 196); }
+.booster-app__messages-item--voucher .messages-item-button:hover { color: rgb(54, 136, 165); }
+.booster-app__messages-item--slide-up { transform: translate(0px, 0px); opacity: 1; }
+.booster-app__messages-item--fade-out { opacity: 0 !important; }
+.booster-app__hide { visibility: hidden; opacity: 0; }
+a.booster-app__messages-item { cursor: pointer; text-decoration: none; }
+.preload-font { font-family: "Archivo Narrow",sans-serif; }
+.preload-font__300 { font-weight: 300; }
+.preload-font__400 { font-weight: 400; }
+.preload-font__500 { font-weight: 500; }
+.preload-font__600 { font-weight: 600; }
+.preload-font__700 { font-weight: 700; }
